@@ -1,6 +1,14 @@
 package net.d1g1byt3.anniescafe;
 
 import com.mojang.logging.LogUtils;
+import net.d1g1byt3.anniescafe.block.ModBlocks;
+import net.d1g1byt3.anniescafe.block.entity.ModBlockEntities;
+import net.d1g1byt3.anniescafe.enchantment.ModEnchantments;
+import net.d1g1byt3.anniescafe.entity.ModEntities;
+import net.d1g1byt3.anniescafe.item.ModItems;
+import net.d1g1byt3.anniescafe.recipe.ModRecipes;
+import net.d1g1byt3.anniescafe.screen.ModMenuTypes;
+import net.d1g1byt3.anniescafe.util.ModCreativeModTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -28,6 +36,16 @@ public class AnniesCafeMod
     public AnniesCafeMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModCreativeModTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModEnchantments.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModEntities.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
